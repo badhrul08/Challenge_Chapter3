@@ -12,6 +12,7 @@ import com.binar.challenge_personal_badhrulsalman.databinding.FragmentScreen4Bin
 class Screen4Fragment : Fragment() {
 
     private lateinit var binding: FragmentScreen4Binding
+    private var empty = "0"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

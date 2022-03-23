@@ -31,7 +31,6 @@ class Screen3Fragment : Fragment() {
 
         val dataDetail = arguments?.getParcelable<Detail>("detail_info")
 
-
         if (dataDetail != null){
             showDataDetail(dataDetail)
         }
@@ -47,14 +46,14 @@ class Screen3Fragment : Fragment() {
         }
     }
 
-    private fun showDataDetail(detailData : Detail) {
+    private fun showDataDetail(dataDetail : Detail) {
         binding.txtYourName.visibility = View.INVISIBLE
         binding.detail.detailData.visibility = View.VISIBLE
-        binding.detail.name.text = detailData.name
-        binding.detail.address.text = detailData.address
-        binding.detail.job.text = detailData.job
+        binding.detail.name.text = dataDetail.name
+        binding.detail.address.text = dataDetail.address
+        binding.detail.job.text = dataDetail.job
 
-        if (detailData.age %2 == 0){
+        if (dataDetail.age %2 == 0){
             age = "Usia Anda, Bernilai Genap"
         }else{
             age = "Usia Anda, Bernilai Ganjil"
