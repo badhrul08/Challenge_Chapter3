@@ -1,11 +1,14 @@
 package com.binar.challenge_personal_badhrulsalman
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentManager
+import androidx.navigation.fragment.findNavController
 import com.binar.challenge_personal_badhrulsalman.databinding.FragmentScreen2Binding
 
 lateinit var nameInfo : String
@@ -27,18 +30,11 @@ class Screen2Fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnScreen2.setOnClickListener {
-            val fragmentManager : FragmentManager = parentFragmentManager
-            val fragmentTransaction = fragmentManager.beginTransaction()
-            val screen3Fragment = Screen3Fragment()
-            val bundle = Bundle()
             nameInfo = binding.edtName.text.toString()
-
-            bundle.putString("Name", nameInfo)
-            screen3Fragment.arguments = bundle
-
-            fragmentTransaction.replace(R.id.frame_layout_container, screen3Fragment, Screen3Fragment::class.java.simpleName)
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
+            val detailSecond = Detail(
+                name = nameInfo
+            )
+            findNavController().navigate(Screen2FragmentDirections.actionScreen2FragmentToScreen3Fragment(detailSecond))
         }
     }
 

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.fragment.findNavController
 import com.binar.challenge_personal_badhrulsalman.databinding.FragmentScreen4Binding
 
 class Screen4Fragment : Fragment() {
@@ -27,21 +28,13 @@ class Screen4Fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnScreen4.setOnClickListener {
-            val fragmentManager : FragmentManager = parentFragmentManager
-            val fragmentTransaction : FragmentTransaction = fragmentManager.beginTransaction()
-            val screen3Fragment = Screen3Fragment()
-            val details = Detail(
+            val detailData = Detail(
                 name = nameInfo,
                 age = binding.editTextAge.text.toString().toInt(),
                 address = binding.editTextAddress.text.toString(),
                 job = binding.editTextJob.text.toString()
             )
-            val bundle = Bundle()
-            bundle.putParcelable("detail_info", details)
-            screen3Fragment.arguments = bundle
-
-            fragmentTransaction.replace(R.id.frame_layout_container, screen3Fragment, Screen3Fragment::class.java.simpleName)
-            fragmentTransaction.commit()
+            findNavController().navigate(Screen4FragmentDirections.actionScreen4FragmentToScreen3Fragment(detailData))
         }
     }
 }

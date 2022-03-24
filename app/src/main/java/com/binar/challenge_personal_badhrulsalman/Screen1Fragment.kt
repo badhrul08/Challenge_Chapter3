@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.fragment.findNavController
 import com.binar.challenge_personal_badhrulsalman.databinding.FragmentScreen1Binding
 
 class Screen1Fragment : Fragment() {
@@ -26,12 +27,7 @@ class Screen1Fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnScreen1.setOnClickListener {
-            val fragmentManager : FragmentManager = parentFragmentManager
-            val fragmentTransaction : FragmentTransaction = fragmentManager.beginTransaction()
-            val screen2Fragment = Screen2Fragment()
-
-            fragmentTransaction.replace(R.id.frame_layout_container, screen2Fragment, Screen2Fragment::class.java.simpleName)
-            fragmentTransaction.commit()
+            findNavController().navigate(Screen1FragmentDirections.actionScreen1FragmentToScreen2Fragment())
         }
     }
 

@@ -5,8 +5,8 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Detail(
-    val name : String,
-    val age : Int,
-    val address : String,
-    val job : String
+    val name : String ?= null,
+    val age : Int ?= null,
+    val address : String ?= null ,
+    val job : String ?= null
 ): Parcelable
